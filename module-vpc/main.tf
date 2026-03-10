@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "vpc_network" {
+module "vpc_network" {  ##create a module for vpc and call it here
 
   source = "./modules/vpc"
 

@@ -1,5 +1,5 @@
 resource "aws_vpc" "main_vpc" {
-    cidr_block = var.vpc_cidr
+    cidr_block = var.vpc_cidr  ##varible given in variable.tf (root) file
 
     tags = {
         Name = "My-VPC"
@@ -9,10 +9,10 @@ resource "aws_vpc" "main_vpc" {
 
 resource "aws_subnet" "public_subnet" {
   
-  count = length(var.public_subnet_cidrs)
+  count = length(var.public_subnet_cidrs)  ##create multi sub-net from var.tf(root)
 
-  vpc_id = aws_vpc.main_vpc.id
-  cidr_block = var.public_subnet_cidrs[count.index]
+  vpc_id = aws_vpc.main_vpc.id ## attach vpc here
+  cidr_block = var.public_subnet_cidrs[count.index] ##subnet cidr from var.tf(root)
   availability_zone = var.availability_zones[count.index]
 tags = {
   Name = "public-subnet-${count.index + 1}"
@@ -32,7 +32,7 @@ tags = {
 }
 
 resource "aws_internet_gateway" "igw" {
-    vpc_id = aws_vpc.main_vpc.id
+    vpc_id = aws_vpc.main_vpc.id ##attach vpc here
 
     tags = {
         Name = "main-igw"
@@ -69,7 +69,7 @@ resource "aws_route_table" "private_rt" {
     vpc_id = aws_vpc.main_vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.nat.id
+    nat_gateway_id = aws_nat_gateway.nat.id ##Allows private subnets to access the internet
   }
   tags = {
     Name = "private-rt"
