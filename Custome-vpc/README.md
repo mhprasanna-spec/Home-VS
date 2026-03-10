@@ -1,4 +1,5 @@
-Terraform VPC code step-by-step so you understand what each block does and how resources connect in AWS networking.
+### Terraform VPC 
+code step-by-step so you understand what each block does and how resources connect in AWS networking.
 
 We will go in this order:
 
@@ -24,7 +25,7 @@ Outputs
 
 How Terraform executes everything
 
-1️⃣ Provider Block
+## 1️⃣ Provider Block
 provider "aws" {
   region = var.aws_region
 }
@@ -46,7 +47,7 @@ variable "aws_region" {
 
 So Terraform will create everything in us-east-1.
 
-2️⃣ Variables
+## 2️⃣ Variables
 
 Variables make Terraform flexible and reusable.
 
@@ -126,7 +127,7 @@ us-east-1c
 
 Using multiple AZs improves high availability.
 
-3️⃣ VPC Creation
+## 3️⃣ VPC Creation
 resource "aws_vpc" "main_vpc" {
   cidr_block = var.vpc_cidr
 
@@ -157,7 +158,7 @@ Name = My-VPC
 
 just labels the resource in AWS console.
 
-4️⃣ Public Subnets
+## 4️⃣ Public Subnets
 resource "aws_subnet" "public_subnet" {
 
   count = length(var.public_subnet_cidrs)
@@ -204,7 +205,7 @@ Any EC2 launched here automatically gets a public IP
 
 This is required for internet-facing instances.
 
-5️⃣ Private Subnets
+## 5️⃣ Private Subnets
 resource "aws_subnet" "private_subnet"
 
 This is similar to public subnet but without:
@@ -221,7 +222,7 @@ databases
 
 internal services
 
-6️⃣ Internet Gateway
+## 6️⃣ Internet Gateway
 resource "aws_internet_gateway" "igw"
 
 This enables:
@@ -231,7 +232,7 @@ VPC → Internet
 Without IGW:
 
 Instances cannot access the internet
-7️⃣ Elastic IP
+## 7️⃣ Elastic IP
 resource "aws_eip" "nat_eip"
 
 Elastic IP = static public IP
@@ -242,7 +243,7 @@ Reason:
 
 Private instances need internet access but should not have public IPs.
 
-8️⃣ NAT Gateway
+## 8️⃣ NAT Gateway
 resource "aws_nat_gateway" "nat"
 
 Purpose:
@@ -263,7 +264,7 @@ subnet_id = aws_subnet.public_subnet[0].id
 
 NAT Gateway must be inside a public subnet.
 
-9️⃣ Route Tables
+## 9️⃣ Route Tables
 
 Route tables control network traffic routing.
 
@@ -287,7 +288,7 @@ Route rule:
 Meaning:
 
 Private instances → NAT → Internet
-🔟 Route Table Associations
+## 🔟 Route Table Associations
 
 Route tables must be attached to subnets.
 
@@ -306,7 +307,7 @@ resource "aws_route_table_association" "private_assoc"
 Attach:
 
 Private subnet → Private route table
-1️⃣1️⃣ Outputs
+## 1️⃣1️⃣ Outputs
 
 Outputs show useful values after deployment.
 
@@ -325,7 +326,7 @@ Same for:
 public subnet IDs
 private subnet IDs
 nat gateway ID
-🔁 Full Architecture Created
+## 🔁 Full Architecture Created
 
 Terraform builds this architecture:
 
