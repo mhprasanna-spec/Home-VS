@@ -9,7 +9,7 @@ resource "aws_launch_template" "lt" {
 #!/bin/bash
 apt update -y
 apt install nginx -y
-echo "Hello from \$HOSTNAME Auto Scaling!" > /var/www/html/index.html
+echo "Hello from $HOSTNAME Auto Scaling!" > /var/www/html/index.html
 systemctl start nginx
 systemctl enable nginx
 EOF
@@ -17,7 +17,7 @@ EOF
 }
 
 resource "aws_autoscaling_group" "asg" {
-  desired_capacity    = 2
+  desired_capacity    = 1
   max_size            = 3
   min_size            = 1
   vpc_zone_identifier = var.subnets
