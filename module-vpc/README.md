@@ -1,21 +1,3 @@
-VPC
- ├── Internet Gateway
- ├── Public Subnets
- │     └── NAT Gateway
- │
- ├── Private Subnets
- │
- ├── Public Route Table
- │     └── IGW
- │
- └── Private Route Table
-       └── NAT
-
-
-
-
-
-
 # Terraform AWS VPC Infrastructure (Using Modules)
 
 This project demonstrates how to create a **production-style AWS networking infrastructure** using **Infrastructure as Code** with **Terraform**.
@@ -493,5 +475,5 @@ Possible improvements for production usage:
 ---
 
 # Author
-
+**Prasanna Waghmare**
 Created as a **Terraform networking project for learning DevOps and AWS infrastructure automation**.
