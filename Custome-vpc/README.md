@@ -345,4 +345,6 @@ Terraform builds this architecture:
  Private Subnet A  Private Subnet B
        |               |
     Private EC2     Private EC2
+
+    
 ---
