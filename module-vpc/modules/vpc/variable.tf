@@ -12,7 +12,7 @@ variable "private_subnet_cidrs" {
   
 }
 
-varible "availability_zones" {
+variable "availability_zones" {
     type = list(string)
   
 }
