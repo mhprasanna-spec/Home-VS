@@ -3,25 +3,25 @@ code step-by-step so you understand what each block does and how resources conne
 
 We will go in this order:
 
-Provider
+- Provider
 
-Variables
+- Variables
 
-VPC
+- VPC
 
-Subnets
+- Subnets
 
-Internet Gateway
+- Internet Gateway
 
-Elastic IP
+- Elastic IP
 
-NAT Gateway
+- NAT Gateway
 
-Route Tables
+- Route Tables
 
-Route Table Associations
+- Route Table Associations
 
-Outputs
+- Outputs
 
 How Terraform executes everything
 
