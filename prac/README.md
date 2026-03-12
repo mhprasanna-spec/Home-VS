@@ -102,8 +102,7 @@ sudo systemctl enable apache2
 # Create a simple web page
 echo "<h1>Apache installed successfully using Terraform remote-exec</h1>" | sudo tee /var/www/html/index.html
 
-# Check Apache status
-sudo systemctl status apache2
+
 ```
 
 ---
