@@ -115,14 +115,6 @@ kubectl version --client
 
 ---
 
-### Install kubectl on Windows (PowerShell)
-
-```
-curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
-```
-
-Move the file to a directory included in your **PATH**.
-
 Verify installation:
 
 ```
